@@ -18,19 +18,19 @@ import ShopCenterProduct from "./afterLogin/ShopCenterProduct/ShopCenterProduct"
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/E-shop/login" element={<Login />} />
+            <Route path="/E-shop/signup" element={<Signup />} />
+            <Route path="/E-shop/" element={<Home />} />
             {/* shop center */}
-            <Route path="/shop-center" element={<ShopCenter />} />
-            <Route path="/shop-center/:category" element={<ShopCenterCategory />} />
-            <Route path="/shop-center/:category/:product" element={<ShopCenterProduct />} />
+            <Route path="/E-shop/shop-center" element={<ShopCenter />} />
+            <Route path="/E-shop/shop-center/:category" element={<ShopCenterCategory />} />
+            <Route path="/E-shop/shop-center/:category/:product" element={<ShopCenterProduct />} />
 
             {/* end shop center */}
-            <Route path="/diet-center" element={<DietCenter />} />
-            <Route path="/about-center" element={<AboutCenter />} />
-            <Route path="/faq" element={<QuestionCenter />} />
-            <Route path="/user-panel" element={<UserPanel />} />
+            <Route path="/E-shop/diet-center" element={<DietCenter />} />
+            <Route path="/E-shop/about-center" element={<AboutCenter />} />
+            <Route path="/E-shop/faq" element={<QuestionCenter />} />
+            <Route path="/E-shop/user-panel" element={<UserPanel />} />
         </>
     )
 );
