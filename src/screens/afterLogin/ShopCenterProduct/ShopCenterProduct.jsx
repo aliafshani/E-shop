@@ -1,26 +1,40 @@
-import React from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import Navbar from '../../../component/Navbar/Navbar';
 
 export default function ShopCenterProduct() {
+    const [mainPhoto, setMainPhoto] = useState('https://dkstatics-public.digikala.com/digikala-products/909cfdc10ef07d8d541229026525fc60a91df42a_1718703751.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90')
     const { product } = useParams()
     const location = useLocation();
     const myWay = location.pathname.split('/')
     myWay.shift()
-    console.log(myWay);
+    myWay.shift()
+
+    const photoChangeHandler = (event) => {
+        setMainPhoto(event.target.src)
+    }
+
+
     return (
         <Navbar>
-            <section className="py-12 bg-white sm:py-16">
+            <section className="pb-12 sm:b-16">
                 <div className="container mx-aut px-4">
                     <nav className="flex">
                         <ol role="list" className="flex items-center">
                             {
-                                myWay.map((item) => (
+                                myWay.map((item, index) => (
                                     <li className="text-left">
                                         <div className="flex items-center">
-                                            <span className="mx-2 text-gray-400">/</span>
+                                            {index === 0 ? "" : <span className="mx-2 text-gray-400">/</span>}
                                             <div className="-m-1">
-                                                <a href="#" className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </a>
+                                                {
+                                                    index === 0
+                                                        ? <Link to={`/E-shop/${item}`} className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </Link>
+                                                        : index === 1
+                                                            ? <Link to={`/E-shop/${myWay[0]}/${item}`} className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </Link>
+                                                            : <span className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </span>
+                                                }
+
                                             </div>
                                         </div>
                                     </li>
@@ -33,25 +47,25 @@ export default function ShopCenterProduct() {
                         </ol>
                     </nav>
 
-                    <div className=" bg-white mx-auto text-black lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
+                    <div className=" mx-auto text-black lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
                         <div className="lg:col-span-3 lg:row-end-1">
                             <div className="lg:flex lg:items-start">
                                 <div className="lg:order-2 lg:ml-5">
                                     <div className="max-w-xl overflow-hidden rounded-lg">
-                                        <img className="h-full w-full max-w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                                        <img className="h-full w-full max-w-full object-cover" src={mainPhoto} alt="" />
                                     </div>
                                 </div>
 
                                 <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                                     <div className="flex flex-row items-start lg:flex-col">
-                                        <button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                            <img className="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
+                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/5a78c3cc0b1a12a2434b5e4124a9964b9facaa09_1708005224.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
                                         </button>
-                                        <button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                            <img className="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
+                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/9ab4a2ab0ef409e3f09c676f7bcc4158790f0775_1708005230.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
                                         </button>
-                                        <button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                            <img className="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
+                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/5ae35141329ad22303f5c5719f49211a2cc41596_1708005228.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
                                         </button>
                                     </div>
                                 </div>
