@@ -17,41 +17,41 @@ function Navbar({ children, name = "" }) {
                 <div className='navbar xl:w-2/12 md:w-4/12 h-dvh z-50 bg-[#1C0333] fixed flex flex-col pr-3 right-0'>
                     <div className='flex justify-evenly align-middle'>
                         <p className='text-3xl my-auto '><GrAppsRounded /></p>
-                        <NavLink to={'/'}><Logo classname={"logo imageLogo"} /></NavLink>
+                        <NavLink to={'/E-shop'}><Logo classname={"logo imageLogo"} /></NavLink>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
                         <p className='text-3xl my-auto '><IoPersonCircle />
                         </p>
                         <p className='mr-10 whitespace-nowrap '>{
                             isLoggedIn ?
-                                <Link to={'/user-panel'}>username</Link>
-                                : <Link to={'/login'}>login / signup</Link>
+                                <Link to={'/E-shop/user-panel'}>username</Link>
+                                : <Link to={'/E-shop/login'}>login / signup</Link>
                         }</p>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
                         <p className='text-3xl my-auto '><LuApple />
                         </p>
-                        <NavLink to={'/diet-center'}>
+                        <NavLink to={'/E-shop/diet-center'}>
                             <p className='mr-10 whitespace-nowrap '>diet center</p>
                         </NavLink>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
                         <p className='text-3xl my-auto '><MdOutlineDirectionsRun />
                         </p>
-                        <NavLink to={'/shop-center'}>
+                        <NavLink to={'/E-shop/shop-center'}>
                             <p className='mr-10 whitespace-nowrap '>shop center</p>
                         </NavLink>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
                         <p className='text-3xl my-auto '><FaUsersGear /></p>
-                        <NavLink to={'/about-center'}>
+                        <NavLink to={'/E-shop/about-center'}>
                             <p className='mr-10 whitespace-nowrap '>about us</p>
                         </NavLink>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
                         <p className='text-3xl my-auto '><FaQuestion /></p>
 
-                        <NavLink to={'/faq'}>
+                        <NavLink to={'/E-shop/faq'}>
                             <p className='mr-10'>FAQ</p>
                         </NavLink>
                     </div>
