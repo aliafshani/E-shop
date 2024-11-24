@@ -1,0 +1,18 @@
+.navbar {
+    transition: all linear .5s;
+    width: 60px;
+    overflow-x: hidden;
+    word-break: keep-all;
+}
+
+.navbar:hover {
+    width: 215px;
+}
+
+.imageLogo {
+    visibility: hidden;
+}
+
+.navbar:hover .imageLogo {
+    visibility: visible;
+}
