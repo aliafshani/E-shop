@@ -2,22 +2,32 @@ import React from 'react'
 import './ShopCenter.css'
 import Navbar from '../../../component/Navbar/Navbar'
 import CategoryCard from '../../../component/CategoryCard/CategoryCard'
-import { TbShirtSport, TbStretching } from "react-icons/tb";
-import { FaDumbbell } from "react-icons/fa6";
-import { LiaBasketballBallSolid } from "react-icons/lia";
-import { GiGymBag } from "react-icons/gi";
+
+import {useGetFetch} from "../../../Hooks/useFetch.jsx";
 
 
 export default function ShopCenter() {
+
+    const {data, isPending, error} = useGetFetch("https://fakestoreapi.com/products/categories")
+    console.log(error)
     return (
         <>
             <Navbar name={"Shop center"}>
                 <div className='w-full flex flex-col md:flex-row flex-wrap  '>
-                    <CategoryCard name={'clothes'} icon={<TbShirtSport />} />
-                    <CategoryCard name={'dumbbell'} icon={<FaDumbbell />} />
-                    <CategoryCard name={'balls'} icon={<LiaBasketballBallSolid />} />
-                    <CategoryCard name={'stretch band'} icon={<TbStretching />} />
-                    <CategoryCard name={'bag'} icon={<GiGymBag />} />
+                    {
+                        <div>
+                            {isPending && <div>Loading...</div>}
+                            {error && <div>{error}</div>}
+                            {data && <div className={"flex flex-wrap justify-center"}>
+                                {data.map((item) =>
+                                    (<CategoryCard key={item.id} name={item}/>)
+                                )}
+                            </div>}
+
+
+                        </div>
+
+                    }
                 </div>
             </Navbar>
         </>

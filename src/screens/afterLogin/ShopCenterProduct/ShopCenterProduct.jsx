@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import Navbar from '../../../component/Navbar/Navbar';
 
 export default function ShopCenterProduct() {
-    const [mainPhoto, setMainPhoto] = useState('https://dkstatics-public.digikala.com/digikala-products/909cfdc10ef07d8d541229026525fc60a91df42a_1718703751.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90')
-    const { product } = useParams()
-    const location = useLocation();
-    const myWay = location.pathname.split('/')
-    myWay.shift()
-    myWay.shift()
+    let [mainProduct, setMainProduct] = useState()
+    const [mainPhoto, setMainPhoto] = useState()
+    let { productID } = useParams()
+
+
+
+    useEffect(() => {
+    }, [])
+
+
+
 
     const photoChangeHandler = (event) => {
         setMainPhoto(event.target.src)
@@ -21,25 +26,19 @@ export default function ShopCenterProduct() {
                 <div className="container mx-aut px-4">
                     <nav className="flex">
                         <ol role="list" className="flex items-center">
-                            {
-                                myWay.map((item, index) => (
+
                                     <li className="text-left">
                                         <div className="flex items-center">
-                                            {index === 0 ? "" : <span className="mx-2 text-gray-400">/</span>}
+                                            <span className="mx-2 text-gray-400">/</span>
                                             <div className="-m-1">
-                                                {
-                                                    index === 0
-                                                        ? <Link to={`/E-shop/${item}`} className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </Link>
-                                                        : index === 1
-                                                            ? <Link to={`/E-shop/${myWay[0]}/${item}`} className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </Link>
-                                                            : <span className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {item} </span>
-                                                }
+
+                                                       <Link to={`/E-shop/`} className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> {} </Link>
+
+
 
                                             </div>
                                         </div>
                                     </li>
-                                ))
-                            }
 
 
 
@@ -58,22 +57,17 @@ export default function ShopCenterProduct() {
 
                                 <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                                     <div className="flex flex-row items-start lg:flex-col">
-                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/5a78c3cc0b1a12a2434b5e4124a9964b9facaa09_1708005224.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
-                                        </button>
-                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/9ab4a2ab0ef409e3f09c676f7bcc4158790f0775_1708005230.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
-                                        </button>
-                                        <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                            <img className="h-full w-full object-cover" src="https://dkstatics-public.digikala.com/digikala-products/5ae35141329ad22303f5c5719f49211a2cc41596_1708005228.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/format,webp/quality,q_90" alt="" />
-                                        </button>
+
+                                                <button onClick={photoChangeHandler} type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
+                                                    <img className="h-full w-full object-cover"  alt="" />
+                                                </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                            <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{product}</h1>
+                            <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{}</h1>
 
                             <div className="mt-5 flex items-center">
                                 <div className="flex items-center">
@@ -112,29 +106,10 @@ export default function ShopCenterProduct() {
                                 </label>
                             </div>
 
-                            <h2 className="mt-8 text-base text-gray-900">Choose subscription</h2>
-                            <div className="mt-3 flex select-none flex-wrap items-center gap-1">
-                                <label className="">
-                                    <input type="radio" name="subscription" value="4 Months" className="peer sr-only" />
-                                    <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">4 Months</p>
-                                    <span className="mt-1 block text-center text-xs">$80/mo</span>
-                                </label>
-                                <label className="">
-                                    <input type="radio" name="subscription" value="8 Months" className="peer sr-only" checked />
-                                    <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">8 Months</p>
-                                    <span className="mt-1 block text-center text-xs">$60/mo</span>
-                                </label>
-                                <label className="">
-                                    <input type="radio" name="subscription" value="12 Months" className="peer sr-only" />
-                                    <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">12 Months</p>
-                                    <span className="mt-1 block text-center text-xs">$40/mo</span>
-                                </label>
-                            </div>
 
                             <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                                 <div className="flex items-end">
                                     <h1 className="text-3xl font-bold">$60.50</h1>
-                                    <span className="text-base">/month</span>
                                 </div>
 
                                 <button type="button" className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">

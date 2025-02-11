@@ -16,7 +16,7 @@ function Navbar({ children, name = "" }) {
 
                 <div className='navbar xl:w-2/12 md:w-4/12 h-dvh z-50 bg-[#1C0333] fixed flex flex-col pr-3 right-0'>
                     <div className='flex justify-evenly align-middle'>
-                        <p className='text-3xl my-auto '><GrAppsRounded /></p>
+                        <p className='text-3xl my-auto mx-2 '><GrAppsRounded /></p>
                         <NavLink to={'/E-shop'}><Logo classname={"logo imageLogo"} /></NavLink>
                     </div>
                     <div className='flex justify-start my-6  align-middle'>
